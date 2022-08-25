@@ -9,7 +9,6 @@ namespace HashTable
     public class MyMapNode<K, V>
     {
         //variables defining 
-
         private readonly int size;
         private readonly LinkedList<KeyValue<K, V>>[] items;
         //creating parameterize constructor 
@@ -52,7 +51,6 @@ namespace HashTable
             }
             return default(V);
         }
-
         //to get position of array 
         protected int GetArrayPosition(K key)
         {
@@ -60,8 +58,6 @@ namespace HashTable
             int position = key.GetHashCode() % size;
             return Math.Abs(position);
         }
-
-
         //creating GetLinkedList method with initial position to return keyvalue pair and
         // gets the position of items array in linked list
         protected LinkedList<KeyValue<K, V>> GetLinkedList(int position)
@@ -78,7 +74,7 @@ namespace HashTable
 
         //to get frequency of values using getfrequency method
 
-        public void GetFrequency(V Values)
+        public int GetFrequency(V Values)
         {
             //initially our frequency is zero
 
@@ -96,17 +92,15 @@ namespace HashTable
                     if (check.Equals(null))
                     {
                         continue;
-
                     }
                     if (check.Value.Equals(Values))
                     {
                         frequency++;
-
                     }
                 }
-
             }
-            Console.WriteLine("Frequency of \"{0}\" is : {1}", Values, frequency);
+            Console.WriteLine("\"{0}\" =>\t this word appears =>\t \"{1}\"  times", Values, frequency);
+            return frequency;
         }
     }
 }
